@@ -1,13 +1,6 @@
-﻿@{ 
-    var auction = new AuctionApp.Models.Auction()
-    {
-        Title = "Example Auction",
-        Description = "This is new product",
-        StartTime = DateTime.Now,
-        EndTime = DateTime.Now.AddDays(7),
-        StartPrice = 1.00m,
-        CurrentPrice = null
-    };
+﻿@model AuctionApp.Models.Auction
+@{ 
+    var auction = Model;
 }
 
 <div class="auction">

@@ -14,9 +14,26 @@ namespace AuctionApp.Controllers
             return View();
         }
 
+        public ActionResult TempDataDamo()
+        {
+            TempData["SucessMessage"] = "The Action Sucessed";
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Auction()
         {
-            return View();
+            var auction = new AuctionApp.Models.Auction()
+            {
+                Title = "Example Auction",
+                Description = "This is new product",
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddDays(7),
+                StartPrice = 1.00m,
+                CurrentPrice = null
+            };
+         
+            return View(auction);
         }
     }
 }
