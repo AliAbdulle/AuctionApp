@@ -166,6 +166,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Auction\Auction.cshtml" />
     <Content Include="Views\Auction\Index.cshtml" />
+    <Content Include="Views\Shared\_AuctionTile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
