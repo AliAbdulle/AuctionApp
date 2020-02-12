@@ -1,0 +1,51 @@
+﻿@{ 
+    var auction = new AuctionApp.Models.Auction()
+    {
+        Title = "Example Auction",
+        Description = "This is new product",
+        StartTime = DateTime.Now,
+        EndTime = DateTime.Now.AddDays(7),
+        StartPrice = 1.00m,
+        CurrentPrice = null
+    };
+}
+
+<div class="auction">
+    <h3>@auction.Title</h3>
+
+    <div class="details">
+        <p> Start Time: @auction.StartTime.ToString("g")</p>
+        <p> End Time: @auction.EndTime.ToString("g")</p>
+        <p> Starting Price: @auction.StartPrice.ToString("g")</p>
+
+        @*
+           Since CuurentPrice is nullable we have to check to see
+            if it has a value before we call  .ToString()!
+        *@
+
+        <p>CurrentPrice:
+            @if(auction.CurrentPrice ==null)
+            {
+                @: [No bids]
+            }
+            else
+            {
+                <span>@auction.CurrentPrice.Value.ToString("C")</span>
+            }
+
+        </p>
+
+        <div>
+            @if(auction.ImageUrl != null)
+            {
+                <img src="@auction.ImageUrl" title="@auction.Title" />
+            }
+        </div>
+
+        <div class="discriptiom">
+            @auction.Description
+        </div>
+
+
+    </div>
+</div>

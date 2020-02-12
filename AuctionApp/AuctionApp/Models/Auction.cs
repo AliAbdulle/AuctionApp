@@ -16,7 +16,7 @@ namespace AuctionApp.Models
         public string ImageUrl { get; set; }
 
         public DateTime StartTime { get; set; }
-        public DateTime EndtTime { get; set; }
+        public DateTime EndTime { get; set; }
 
 
         public Decimal StartPrice { get; set; }

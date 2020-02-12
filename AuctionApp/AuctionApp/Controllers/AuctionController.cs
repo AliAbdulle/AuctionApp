@@ -13,5 +13,10 @@ namespace AuctionApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Auction()
+        {
+            return View();
+        }
     }
 }
