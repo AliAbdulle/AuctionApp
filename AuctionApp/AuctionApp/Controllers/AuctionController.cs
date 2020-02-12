@@ -11,8 +11,38 @@ namespace AuctionApp.Controllers
         // GET: Auction
         public ActionResult Index()
         {
-            return View();
+            var auction = new[] {
+                new Models.Auction()
+            {
+                Title = "Example Auction #1",
+                Description = "This is new product",
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddDays(7),
+                StartPrice = 1.00m,
+                CurrentPrice = null
+            },
+                new Models.Auction()
+            {
+                Title = "Example Auction #2",
+                Description = "This is new product",
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddDays(7),
+                StartPrice = 100m,
+                CurrentPrice = 30m
+            },
+                new Models.Auction()
+            {
+                Title = "Example Auction #3",
+                Description = "This is new product",
+                StartTime = DateTime.Now,
+                EndTime = DateTime.Now.AddDays(7),
+                StartPrice = 10.00m,
+                CurrentPrice = 24m
+            },
+        };
+            return View(auction);
         }
+
 
         public ActionResult TempDataDamo()
         {
@@ -32,7 +62,6 @@ namespace AuctionApp.Controllers
                 StartPrice = 1.00m,
                 CurrentPrice = null
             };
-         
             return View(auction);
         }
     }

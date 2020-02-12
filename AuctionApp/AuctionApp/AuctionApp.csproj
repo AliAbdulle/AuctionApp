@@ -164,8 +164,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Auction\Index.cshtml" />
     <Content Include="Views\Auction\Auction.cshtml" />
+    <Content Include="Views\Auction\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
