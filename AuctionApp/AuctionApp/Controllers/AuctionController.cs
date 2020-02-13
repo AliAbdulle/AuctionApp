@@ -64,5 +64,12 @@ namespace AuctionApp.Controllers
             };
             return View(auction);
         }
+
+        public ActionResult Create()
+        {
+            var categoryList = new SelectList(new[] { "Books", "Pens", "Electronics" });
+            ViewBag.CategoryList = categoryList;
+            return View();
+        }
     }
 }
