@@ -51,7 +51,7 @@ namespace AuctionApp.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Auction()
+        public ActionResult Auction(long id)
         {
             var auction = new AuctionApp.Models.Auction()
             {
@@ -65,7 +65,7 @@ namespace AuctionApp.Controllers
             return View(auction);
         }
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(Models.Auction auction)
         {
             var categoryList = new SelectList(new[] { "Books", "Pens", "Electronics" });
             ViewBag.CategoryList = categoryList;
