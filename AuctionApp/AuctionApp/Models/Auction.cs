@@ -15,16 +15,21 @@ namespace AuctionApp.Models
         public string Title { get; set; }
 
         public string Description { get; set; }
-
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "ImageUrl")]
         public string ImageUrl { get; set; }
-        [Required]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Start Time")]
         public DateTime StartTime { get; set; }
-        [Required]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "End Time")]
         public DateTime EndTime { get; set; }
 
-        [Required]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Start Price")]
         public Decimal StartPrice { get; set; }
-
+        [DataType(DataType.Currency)]
+        [Display(Name = "Currency Bid Price")]
         public Decimal? CurrentPrice { get; set; }
 
 

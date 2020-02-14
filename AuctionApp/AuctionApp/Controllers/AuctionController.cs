@@ -77,15 +77,6 @@ namespace AuctionApp.Controllers
        [HttpPost]
         public ActionResult Create([Bind(Exclude = "CurrentPrice")]Models.Auction auction)
         {
-            if (string.IsNullOrWhiteSpace(auction.Title))
-            {
-                ModelState.AddModelError("Title", "Title is required!");
-            }
-            else if (auction.Title.Length < 5 || auction.Title.Length > 200)
-            {
-                ModelState.AddModelError("Title", "Title must be between 5 and 200 character long");
-            }
-
             if (ModelState.IsValid)
             {
                 //Save database
