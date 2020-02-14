@@ -64,19 +64,36 @@ namespace AuctionApp.Controllers
             };
             return View(auction);
         }
+
         [HttpGet]
-        public ActionResult Create(Models.Auction auction)
+        public ActionResult Create()
         {
             var categoryList = new SelectList(new[] { "Books", "Pens", "Electronics" });
             ViewBag.CategoryList = categoryList;
             return View();
         }
-        [HttpPost]
-        public ActionResult Post()
+
+
+       [HttpPost]
+        public ActionResult Create([Bind(Exclude = "CurrentPrice")]Models.Auction auction)
         {
-            return View();
+            if (string.IsNullOrWhiteSpace(auction.Title))
+            {
+                ModelState.AddModelError("Title", "Title is required!");
+            }
+            else if (auction.Title.Length < 5 || auction.Title.Length > 200)
+            {
+                ModelState.AddModelError("Title", "Title must be between 5 and 200 character long");
+            }
+
+            if (ModelState.IsValid)
+            {
+                //Save database
+                return RedirectToAction("Index");
+            }
+
+            return Create();
         }
-        
         public ActionResult Edit()
         {
             return View();
