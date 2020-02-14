@@ -71,8 +71,13 @@ namespace AuctionApp.Controllers
             ViewBag.CategoryList = categoryList;
             return View();
         }
-
+        [HttpPost]
         public ActionResult Post()
+        {
+            return View();
+        }
+        
+        public ActionResult Edit()
         {
             return View();
         }
