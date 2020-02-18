@@ -7,5 +7,6 @@ namespace AuctionApp.Models
 {
     public class About
     {
+        
     }
 }
