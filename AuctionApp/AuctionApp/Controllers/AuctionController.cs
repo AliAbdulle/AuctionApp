@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AuctionApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -55,6 +56,7 @@ namespace AuctionApp.Controllers
         {
             var auction = new AuctionApp.Models.Auction()
             {
+                //Data set
                 Title = "Example Auction",
                 Description = "This is new product",
                 StartTime = DateTime.Now,
@@ -68,6 +70,7 @@ namespace AuctionApp.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            // Drop down category
             var categoryList = new SelectList(new[] { "Books", "Pens", "Electronics" });
             ViewBag.CategoryList = categoryList;
             return View();
@@ -80,7 +83,10 @@ namespace AuctionApp.Controllers
             if (ModelState.IsValid)
             {
                 //Save database
-                return RedirectToAction("Index");
+                var db = new AuctionDataContext();
+                db.Auction.Add(auction);
+
+                return RedirectToAction("Inded");
             }
 
             return Create();
