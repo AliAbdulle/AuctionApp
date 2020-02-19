@@ -25,9 +25,35 @@ namespace AuctionApp.Controllers
             var db = new AuctionDataContext();
             var auction = db.Auctions.Find(id);
 
-            
+
             return View(auction);
         }
+
+        [HttpPost]
+        public ActionResult Bid(Bid bid)
+        {
+            var db = new AuctionDataContext();
+            var auction = db.Auctions.Find(bid.AuctionId);
+
+            if (auction == null)
+            {
+                ModelState.AddModelError("AuctionId", "Auction Not found");
+            }
+            else if (auction.CurrentPrice >= bid.Amount)
+            {
+                ModelState.AddModelError("Amount", "Bid amount must be exceed current bid");
+            }
+            else
+            {
+                bid.Username = User.Identity.Name;
+                auction.Bids.Add(bid);
+                auction.CurrentPrice = bid.Amount;
+                db.SaveChanges();
+            }
+            return View(bid);
+        }
+
+
 
         [HttpGet]
         public ActionResult Create()
@@ -39,7 +65,7 @@ namespace AuctionApp.Controllers
         }
 
 
-       [HttpPost]
+        [HttpPost]
         public ActionResult Create([Bind(Exclude = "CurrentPrice")]Models.Auction auction)
         {
             if (ModelState.IsValid)
@@ -54,6 +80,7 @@ namespace AuctionApp.Controllers
 
             return Create();
         }
+
         public ActionResult Edit()
         {
             return View();

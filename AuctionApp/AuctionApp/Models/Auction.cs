@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -33,6 +34,16 @@ namespace AuctionApp.Models
         [Display(Name = "Currency Bid Price")]
         public Decimal? CurrentPrice { get; set; }
 
+        public int BidCount
+        {
+            get { return Bids.Count; }
+        }
+
+        public virtual Collection<Bid> Bids { get; private set; }
+        public Auction()
+        {
+            Bids = new Collection<Bid>();
+        }
 
     }
 }

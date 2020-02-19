@@ -3,33 +3,51 @@
     var auction = Model;
 }
 
-<div class="auction">
-    <h3>@auction.Title</h3>
+    <div class="auction">
+        <h3>@auction.Title</h3>
 
-    <div class="details">
-        <p> Start Time: @auction.StartTime.ToString("g")</p>
-        <p> End Time: @auction.EndTime.ToString("g")</p>
-        <p> Starting Price: @auction.StartPrice.ToString("g")</p>
+        <div class="details">
+            <p> Start Time: @auction.StartTime.ToString("g")</p>
+            <p> End Time: @auction.EndTime.ToString("g")</p>
+            <p> Starting Price: @auction.StartPrice.ToString("g")</p>
 
-        @*
-           Since CuurentPrice is nullable we have to check to see
-            if it has a value before we call  .ToString()!
-        *@
+            @*
+            Since CuurentPrice is nullable we have to check to see
+             if it has a value before we call  .ToString()!
+            *@
 
-        <p>CurrentPrice:
-            @if(auction.CurrentPrice ==null)
-            {
-                @: [No bids]
-            }
-            else
-            {
-                <span>@auction.CurrentPrice.Value.ToString("C")</span>
-            }
+            <p>
+                CurrentPrice:
+                @if (auction.CurrentPrice == null)
+                {
+                    @: [No bids]
+                }
+                else
+                {
+                    <span>@auction.CurrentPrice.Value.ToString("C")</span>
+                    <span>[@auction.BidCount bids]</span>
+                }
 
-        </p>
+            </p>
+            <p>
+                @using (Html.BeginForm("Bid", "Auctions"))
+                {
+                    var lowestBidAmount = auction.CurrentPrice.GetValueOrDefault(auction.StartPrice) + 1;
+                    <span>
+                        Bid: $@Html.TextBox("amount", lowestBidAmount)
+                        @Html.ValidationMessage("amount")
+                    </span>
+
+                    @Html.Hidden("auctionId", auction.Id)
+
+                    <input class="post-bid" type="submit" value="Bid" />
+                }
+            </p>
+        </div>
+
 
         <div>
-            @if(auction.ImageUrl != null)
+            @if (auction.ImageUrl != null)
             {
                 <img src="@auction.ImageUrl" title="@auction.Title" />
             }

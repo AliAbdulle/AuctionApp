@@ -9,5 +9,10 @@ namespace AuctionApp.Models
     public class AuctionDataContext : DbContext
     {
         public DbSet<Auction> Auctions { get; set; }
+
+        static AuctionDataContext()
+        {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AuctionDataContext>());
+        }
     }
 }

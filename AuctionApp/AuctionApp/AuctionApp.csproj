@@ -134,6 +134,7 @@
     </Compile>
     <Compile Include="Models\Auction.cs" />
     <Compile Include="Models\AuctionDataContext.cs" />
+    <Compile Include="Models\Bid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
