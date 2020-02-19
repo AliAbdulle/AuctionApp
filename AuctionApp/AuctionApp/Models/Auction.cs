@@ -8,6 +8,7 @@ namespace AuctionApp.Models
 {
     public class Auction
     {
+        [Required]
         public long Id { get; set; }
         [Required ]
         public string Category { get; set; }
