@@ -81,9 +81,13 @@ namespace AuctionApp.Controllers
             return Create();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit([Bind(Include = "StartPice")]Models.Auction auction)
         {
-            return View();
+            var local = new AuctionDataContext();
+            local.Auctions.Add(auction);
+            local.SaveChanges();
+
+            return View(local);
         }
     }
 }
