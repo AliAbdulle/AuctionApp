@@ -28,7 +28,7 @@ namespace AuctionApp.Controllers
 
             return View(auction);
         }
-
+        // bid section
         [HttpPost]
         public ActionResult Bid(Bid bid)
         {
@@ -64,7 +64,7 @@ namespace AuctionApp.Controllers
             return View();
         }
 
-
+        //Create sectiom
         [HttpPost]
         public ActionResult Create([Bind(Exclude = "CurrentPrice")]Models.Auction auction)
         {
@@ -81,6 +81,7 @@ namespace AuctionApp.Controllers
             return Create();
         }
 
+        //Edit section
         public ActionResult Edit([Bind(Include = "StartPice")]Models.Auction auction)
         {
             var local = new AuctionDataContext();
